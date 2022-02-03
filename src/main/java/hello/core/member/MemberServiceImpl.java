@@ -25,5 +25,6 @@ public class MemberServiceImpl implements MemberService{
 
     private void jam() {
         System.out.println("jam");
+        System.out.println("jam");
     }
 }
