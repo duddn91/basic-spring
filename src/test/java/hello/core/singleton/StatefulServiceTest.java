@@ -7,11 +7,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-public class SingletonServiceTest {
+public class StatefulServiceTest {
 
     @Test
     void stateServiceSingleton() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext ac = new AnnotationConfigApplicationContext(TestConfig.class);
         StatefulService statefulService1 = ac.getBean("statefulService", StatefulService.class);
         StatefulService statefulService2 = ac.getBean("statefulService", StatefulService.class);
 

@@ -23,8 +23,9 @@ public class MemberServiceImpl implements MemberService{
         return memberRepository.findById(memberId);
     }
 
-    private void jam() {
-        System.out.println("jam");
-        System.out.println("jam");
+    // for test
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
+
 }
