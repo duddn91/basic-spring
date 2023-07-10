@@ -6,6 +6,7 @@ import hello.core.member.Grade;
 import hello.core.member.Member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -20,12 +21,12 @@ public class AllBeanTest {
 
 		DiscountService discountService = ac.getBean(DiscountService.class);
 		Member member = new Member(1L, "name", Grade.VIP);
-		int discountPrice = discountService.discount(member, 10000, "fixDisCountPolicy");
+		int discountPrice = discountService.discount(member, 10000, "fixDiscountPolicy");
 
 		Assertions.assertThat(discountService).isInstanceOf(DiscountService.class);
 		Assertions.assertThat(discountPrice).isEqualTo(1000);
 
-		int rateDiscountPrice = discountService.discount(member, 20000, "rateDisCountPolicy");
+		int rateDiscountPrice = discountService.discount(member, 20000, "rateDiscountPolicy");
 		Assertions.assertThat(rateDiscountPrice).isEqualTo(2000);
 	}
 
@@ -33,6 +34,7 @@ public class AllBeanTest {
 		private Map<String, DiscountPolicy> policyMap;
 		private List<DiscountPolicy> policyList;
 
+		@Autowired
 		public DiscountService(Map<String, DiscountPolicy> policyMap, List<DiscountPolicy> policyList) {
 			this.policyMap = policyMap;
 			this.policyList = policyList;
